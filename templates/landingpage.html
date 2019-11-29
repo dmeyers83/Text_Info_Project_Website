@@ -20,7 +20,13 @@
             $(".searchbutton").click(function() {
                 queryText = $(".querytext").val();
                 resultsURL = "/result/" + queryText;
-                window.location.href = resultsURL;
+                if (queryText.trim() != "") {
+                    window.location.href = resultsURL;
+                }
+                else{
+                    alert("You must enter a search term")
+                }
+
             });
 
         });
