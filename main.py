@@ -1,8 +1,4 @@
-# windows instructions to run
-# 1: Type: set FLASK_APP=main.py
-# 2. Type: flask run
-
-#this is a sample object which will be returned by the LDA library
+#this is a sample object which will be returned by the LDA library.  This will be deleted.
 sampleLDAObject = [([(0.016457407, 'blinddata'),
    (0.013355694, 'challenge'),
    (0.01012295, 'company'),
@@ -114,16 +110,18 @@ sampleLDAObject = [([(0.016457407, 'blinddata'),
    (0.01193623, 'spark')],
   -1.1233787114499412)]
 
-
-
-
+#import flask library
 from flask import Flask, escape, url_for, render_template
+
+#initialize flask app
 app = Flask(__name__)
 
+#Path to render the html to display the search page
 @app.route('/')
 def displaySearch():
     return render_template('landingpage.html')
 
+#path to render the results page.  the searchQuery parameter is passed from the landing page.
 @app.route('/result/<searchQuery>')
 def diplayresult(searchQuery):
 
@@ -142,7 +140,6 @@ def diplayresult(searchQuery):
             labelsList.append(topicLabelList)
             dataList.append(topicDataList)
 
-        #pass data for one topic to test
         return render_template('results.html', searchQuery=searchQuery, labels =labelsList, values=dataList,numTopics=numTopics )
 
 #run flask app
