@@ -1,6 +1,9 @@
 #Dependencies 
 - Flask
 
+#run
+- python main.py
+
 #Files
 - main.py: Main python code that initializes flask, runs the scrapper/LDA (not complete) and creates URL routes to the 2 HTML pages (results.html, landingpage.html)
 - landingpage.html: landing page where a user will input a job search query
