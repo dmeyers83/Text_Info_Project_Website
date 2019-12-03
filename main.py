@@ -127,6 +127,7 @@ def diplayresult(searchQuery):
 
         labelsList = [] # list of labels for each topic
         dataList = [] #list of data points for each topic
+        dataList_tot = []
         numTopics = len(sampleLDAObject) #num of topics
 
         #format data into a list of data points and labels
@@ -139,8 +140,10 @@ def diplayresult(searchQuery):
                 topicLabelList.append(topic[1])
             labelsList.append(topicLabelList)
             dataList.append(topicDataList)
+            # fake dataset cotaining probability of word
+            dataList_tot.append([x*2 for x in topicDataList])
 
-        return render_template('results.html', searchQuery=searchQuery, labels =labelsList, values=dataList,numTopics=numTopics )
+        return render_template('results.html', searchQuery=searchQuery, labels =labelsList, values=dataList, values_tot=dataList_tot,numTopics=numTopics )
 
 #run flask app
 if __name__ == '__main__':
