@@ -15,12 +15,14 @@
     <script>
 
         $(document).ready(function() {
-
+            $( ".loader" ).hide();
             <!-- Redirect to python route to display results passing the query in the URL-->
             $(".searchbutton").click(function() {
                 queryText = $(".querytext").val();
                 resultsURL = "/result/" + queryText;
                 if (queryText.trim() != "") {
+                    $( ".mainbody" ).hide();
+                    $( ".loader" ).show();
                     window.location.href = resultsURL;
                 }
                 else{
@@ -41,7 +43,7 @@
 
 
 <body>
-  <div class="section no-pad-bot" id="index-banner">
+  <div class="section no-pad-bot mainbody" id="index-banner">
     <div class="container">
       <br><br>
 
@@ -70,7 +72,22 @@
 
     </div>
   </div>
-
+<div class="loader container center">
+    <br><br><br>
+    <img src="{{url_for('static', filename='RR.png')}}" alt="logo"><br><br>
+  <div class="preloader-wrapper big active">
+    <div class="spinner-layer spinner-blue-only">
+      <div class="circle-clipper left">
+        <div class="circle"></div>
+      </div><div class="gap-patch">
+        <div class="circle"></div>
+      </div><div class="circle-clipper right">
+        <div class="circle"></div>
+      </div>
+    </div>
+  </div><br>
+<h6>Scrapping Indeed jobs and running Topic models may take several minutes!</h6>
+</div>
 
   <div class="container">
     <div class="section">
